@@ -47,8 +47,39 @@ class BinarySearchTreeNode:
 
         return elements
 
+    def delete(self, val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            elif self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.right
+
+            max_val = self.left.find_max()
+            self.data = max_val
+            self.left = self.left.delete(max_val)
+
+        return self
+
+    def find_max(self):
+        if self.right is None:
+            return self.data
+        return self.right.find_max()
+
+    def find_min(self):
+        if self.left is None:
+            return self.data
+        return self.left.find_min()
+
 def build_tree(elements):
-    print("Building tree with these elements:",elements)
+    print("These are alphabets in my name:",elements)
     root = BinarySearchTreeNode(elements[0])
 
     for i in range(1,len(elements)):
@@ -57,5 +88,12 @@ def build_tree(elements):
     return root
 
 if __name__ == '__main__':
-    fullname = ["i","v","o", "n","n","e","g","l","y","n","n","p","l","a","s","c","o"]
-    my_fullname = build_tree(fullname)
+    fullname = build_tree(["i","v","o","n","n","e","g","l","y","n","n","p","l","a","s","c","o"])
+    fullname.delete("n")
+    print("After deleting n", fullname.in_order_traversal())
+
+    fullname.delete("o")
+    print("After deleting o", fullname.in_order_traversal())
+
+    fullname.delete("i")
+    print("After deleting i", fullname.in_order_traversal())
