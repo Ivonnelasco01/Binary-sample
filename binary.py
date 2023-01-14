@@ -97,3 +97,7 @@ if __name__ == '__main__':
 
     fullname.delete("i")
     print("After deleting i", fullname.in_order_traversal())
+
+# to be honest sir, I kinda don`t understand the lesson,
+#  so I just modified the code in youtube here is the 
+# reference : https://www.youtube.com/watch?v=JnrbMQyGLiU
