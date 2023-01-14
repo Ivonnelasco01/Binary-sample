@@ -55,3 +55,7 @@ def build_tree(elements):
         root.add_child(elements[i])
 
     return root
+
+if __name__ == '__main__':
+    fullname = ["i","v","o", "n","n","e","g","l","y","n","n","p","l","a","s","c","o"]
+    my_fullname = build_tree(fullname)
